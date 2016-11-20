@@ -25,15 +25,16 @@ public class UserDAO extends AbsctractDAO {
     public User findUserByCreds(Credentials creds) {
         prepareResources();
         try {
-            ResultSet rs = statement.executeQuery("select user_id, username, role, create_time from `" + AppConfig.getDbName() + "`.user"
+            ResultSet rs = statement.executeQuery("select user_id, username, userpic_name, role, create_time from `" + AppConfig.getDbName() + "`.user"
                     + "where email='" + creds.getUsername() + "' and password='" + creds.getPassword() + "';");
             while (rs.next()) {
                 int userId = rs.getInt("user_id");
                 String username = rs.getString("username");
+                String userpicName = rs.getString("userpic_name");
                 Role role = roleDAO.findRoleById(rs.getInt("role"));
                 Date createTime = rs.getDate("create_time");
 
-                return new User(userId, username, creds.getUsername(), creds.getPassword(), createTime, role);
+                return new User(userId, username, userpicName, creds.getUsername(), creds.getPassword(), createTime, role);
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);

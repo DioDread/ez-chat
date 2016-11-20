@@ -8,18 +8,20 @@ public class User {
 
     private int userId;
     private String username;
+    private String userpicName;
     private String email;
     private String password;
     private Date createTime;
     private Role role;
-    
+
     public User() {
-        
+
     }
 
-    public User(int userId, String username, String email, String password, Date createTime, Role role) {
+    public User(int userId, String username, String userpicName, String email, String password, Date createTime, Role role) {
         this.userId = userId;
         this.username = username;
+        this.userpicName = userpicName;
         this.email = email;
         this.password = password;
         this.createTime = createTime;
@@ -109,18 +111,32 @@ public class User {
     public void setRole(Role role) {
         this.role = role;
     }
-    
+
+    /**
+     * @return the userpicName
+     */
+    public String getUserpicName() {
+        return userpicName;
+    }
+
+    /**
+     * @param userpicName the userpicName to set
+     */
+    public void setUserpicName(String userpicName) {
+        this.userpicName = userpicName;
+    }
+
     /**
      * @return JSON representation of user
      */
     public JsonObject toJson() {
         return Json.createObjectBuilder()
-                .add("userId", userId)
-                .add("username", username)
-                .add("email", email)
-                .add("password", password)
-                .add("role", role.toJson())
-                .add("createTime", createTime.toString())
+                .add("userId", getUserId())
+                .add("username", getUsername())
+                .add("email", getEmail())
+                .add("password", getPassword())
+                .add("role", getRole().toJson())
+                .add("createTime", getCreateTime().toString())
                 .build();
     }
 }
