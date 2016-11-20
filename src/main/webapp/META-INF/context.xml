@@ -1,2 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/ez-chat"/>
+<Context path="/ez-chat">
+    <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxIdle="30" maxTotal="100" maxWaitMillis="10000" name="jdbc/ez-chat" password="root" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/ez-chat" username="root"/>
+</Context>
+
