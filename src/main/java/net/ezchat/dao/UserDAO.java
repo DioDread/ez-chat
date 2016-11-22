@@ -51,15 +51,17 @@ public class UserDAO extends AbsctractDAO {
         prepareResources();
         User user = new User();
         try {
-            ResultSet rs = statement.executeQuery("select username, email, role, create_time from `" + AppConfig.getDbName() + "`.user"
+            ResultSet rs = statement.executeQuery("select username, userpic_name, email, role, create_time from `" + AppConfig.getDbName() + "`.user"
                     + "where user_id=" + userId + ";");
             while (rs.next()) {
                 String username = rs.getString("username");
+                String userPicName = rs.getString("userpic_name");
                 String email = rs.getString("email");
                 Role role = roleDAO.findRoleById(rs.getInt("role"));
                 Date createTime = rs.getDate("create_time");
                 
                 user.setUsername(username);
+                user.setUserpicName(userPicName);
                 user.setEmail(email);
                 user.setRole(role);
                 user.setCreateTime(createTime);
@@ -76,17 +78,18 @@ public class UserDAO extends AbsctractDAO {
     }
 
     public void insertUser(User user) throws SQLException {
-        prepareResources();
         try {
-            SimpleDateFormat sdtf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String query = "insert into `" + AppConfig.getDbName() + "`.user values(" + (getLastUserId() + 1) + ", '"
-                    + user.getUsername() + "', '" + user.getEmail() + "', '" + user.getPassword() + "', now(), "
-                    + user.getRole().getRoleId() + ");";
-            statement.executeQuery(query);
+                    + user.getUsername() + "', '" + user.getUserpicName() + "', '" + user.getEmail() + "', '" 
+                    + user.getPassword() + "', now(), " + user.getRole().getRoleId() + ");";
+            prepareResources();
+            statement.executeUpdate(query);
         } catch (IOException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ConfigurationException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            releaseResources();
         }
     }
 

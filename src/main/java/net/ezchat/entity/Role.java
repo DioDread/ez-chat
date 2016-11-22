@@ -40,11 +40,23 @@ public class Role {
     public void setRoleName(String roleName) {
         this.roleName = roleName;
     }
-
+    
+    /**
+     * @return Json representation of Role object
+     */
     public JsonObject toJson() {
         return Json.createObjectBuilder()
                 .add("roleId", roleId)
                 .add("roleName", roleName)
                 .build();
+    }
+    
+    /**
+     * Create Object from it's Json representation;
+     * @param roleJson - Role representing Json 
+     * @return Role object based on it's Json representation
+     */
+    public static Role fromJson(JsonObject roleJson) {
+        return new Role(roleJson.getInt("roleId"), roleJson.getString("roleName"));
     }
 }

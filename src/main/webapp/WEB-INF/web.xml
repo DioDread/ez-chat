@@ -14,10 +14,18 @@
         <servlet-name>Main</servlet-name>
         <servlet-class>net.ezchat.servlets.MainServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>User</servlet-name>
+        <servlet-class>net.ezchat.servlets.UserServlet</servlet-class>
+    </servlet>
     
     <servlet-mapping>
         <servlet-name>Main</servlet-name>
         <url-pattern>/main</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>User</servlet-name>
+        <url-pattern>/user</url-pattern>
     </servlet-mapping>
     
     <welcome-file-list>

@@ -1,5 +1,8 @@
 package net.ezchat.entity;
 
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -133,10 +136,31 @@ public class User {
         return Json.createObjectBuilder()
                 .add("userId", getUserId())
                 .add("username", getUsername())
+                .add("userPicName", getUserpicName())
                 .add("email", getEmail())
                 .add("password", getPassword())
                 .add("role", getRole().toJson())
                 .add("createTime", getCreateTime().toString())
                 .build();
+    }
+    
+    /**
+     * Create User object from it's Json representation
+     * @param userJson - Json Object of User
+     * @return {User} new user object
+     * @throws java.text.ParseException
+     */
+    public static User fromJson(JsonObject userJson) throws ParseException {
+        User user = new User();
+        user.setUserId(userJson.getInt("userId"));
+        user.setUsername(userJson.getString("username"));
+        user.setUserpicName(userJson.getString("userPicName"));
+        user.setEmail(userJson.getString("email"));
+        user.setPassword(userJson.getString("password"));
+        user.setRole(Role.fromJson(userJson.getJsonObject("role")));
+        String strCreateTime = userJson.getString("createTime");
+        SimpleDateFormat sdtf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        user.setCreateTime("".equals(strCreateTime) ? null : sdtf.parse(strCreateTime));
+        return user;
     }
 }
