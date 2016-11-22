@@ -24,4 +24,8 @@ public class AppConfig {
     public static String getDbName() throws IOException {
         return getConfig().getProperty("db.name");
     }
+    
+    public static String getSalt() throws IOException {
+        return getConfig().getProperty("secret");
+    }
 }

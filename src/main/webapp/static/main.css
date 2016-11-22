@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    height: 100%
+}
+div, input, button {
+    font-family: 'Roboto', sans-serif;
+}
+.app-mount-point {
+    height: 100%;
+}
