@@ -42,7 +42,7 @@
     
     <servlet-mapping>
         <servlet-name>Main</servlet-name>
-        <url-pattern>/main</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>User</servlet-name>

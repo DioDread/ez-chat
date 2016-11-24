@@ -11,3 +11,6 @@ div, input, button {
 .app-mount-point {
     height: 100%;
 }
+.hide {
+    display: none;
+}

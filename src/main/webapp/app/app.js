@@ -1,7 +1,7 @@
 (function(){
     //TODO Application first laucnh, check user auth, if not call auth render and it's script
     var mountPoint = select('.app-mount-point');
-    var renderAuthPage = new Ajax('get', 'http://localhost:8084/ez-chat/auth.html');
+    var renderAuthPage = new Ajax('get', 'http://localhost:8080/ez-chat/auth.html');
     
     renderAuthPage.success = function(data) {
         mountPoint.insertAdjacentHTML('afterbegin', data);

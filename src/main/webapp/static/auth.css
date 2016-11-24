@@ -14,9 +14,10 @@
     height: 160px;
     width: 179px;
 }
-.login-block input {
+.login-block input, .input-block input {
+    padding-left: 10px;
     font-size: 25px;
-    margin-top: 20px;
+    margin-top: 18px;
     margin-bottom: 3px;
     height: 45px;
     background-color: #f1d973;
@@ -46,4 +47,20 @@
     text-align: center;
     font-size: 55px;
     margin-bottom: 45px;
+}
+.input-block {
+    width: 60%;
+    margin: auto;
+    font-size: 25px;
+}
+.caption {
+    display: inline-block;
+    width: 250px;
+    text-align: right;
+}
+.input-block input[type=file] {
+    width: 328px;
+    height: 35px;
+    background: none;
+    border: none;
 }

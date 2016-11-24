@@ -1,0 +1,12 @@
+{
+    "userId": 0,
+    "username": "test",
+    "userPicName": "",
+    "email": "test@test.test",
+    "password": "test",
+    "role": {
+        "roleId": 1,
+        "roleName": "user"
+    },
+    "createTime": ""
+}
