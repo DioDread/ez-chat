@@ -60,7 +60,20 @@
 }
 .input-block input[type=file] {
     width: 328px;
-    height: 35px;
+    height: 45px;
     background: none;
     border: none;
+}
+.signup-control {
+    text-align: center;
+    padding-left: 70px;
+    padding-top: 25px;
+}
+.signup-control button {
+    font-size: 22px;
+    margin-left: 10px;
+    width: 100px;
+    height: 45px;
+    border-radius: 0;
+    border: 1px solid #c7b35d;
 }
